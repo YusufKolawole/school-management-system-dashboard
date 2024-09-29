@@ -1,6 +1,7 @@
+import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 const menuItems = [
   {
@@ -120,21 +121,30 @@ const menuItems = [
 export default function Menu() {
   return (
     <div className="mt-4 text-sm">
-      {menuItems.map((item) => (
-        <div className=" flex flex-col gap-2" key={uuidv4()}>
+      {menuItems.map((i) => (
+        <div className=" flex flex-col gap-2" key={i.title}>
           <span className="hidden lg:block text-gray-400 font-light my-4 ">
-            {item.title}
+            {i.title}
           </span>
-          {item.items.map((item) => (
-            <Link
-              href={item.href}
-              key={uuidv4()}
-              className="flex items-center lg:justify-start gap-4 text-gray-500 py-2"
-            >
-              <Image src={item.icon} alt={item.label} width={20} height={20} />
-              <span className="hidden lg:block">{item.label}</span>
-            </Link>
-          ))}
+          {i.items.map((item) => {
+            if (item.visible.includes(role)) {
+              return (
+                <Link
+                  href={item.href}
+                  key={item.label}
+                  className="flex items-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-devSkyLight"
+                >
+                  <Image
+                    src={item.icon}
+                    alt={item.label}
+                    width={20}
+                    height={20}
+                  />
+                  <span className="hidden lg:block">{item.label}</span>
+                </Link>
+              );
+            }
+          })}
         </div>
       ))}
     </div>
