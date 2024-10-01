@@ -1,7 +1,8 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import {resultsData, role } from "@/lib/data";
+import { resultsData, role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,18 +65,12 @@ const ResultListPage = () => {
       <td className="hidden md:table-cell">{item.teacher}</td>
       <td className="hidden md:table-cell">{item.class}</td>
       <td className="hidden md:table-cell">{item.date}</td>
-      <td> 
+      <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/lessons/${item.id}`}>
-            <button className="rounded-full w-7 h-7 flex items-center justify-center bg-devSky">
-              <Image src="/edit.png" alt="view" width={16} height={16} />
-            </button>
+            <FormModal table="result" type="update" />
           </Link>
-          {role === "admin" && (
-            <button className="rounded-full w-7 h-7 flex items-center justify-center bg-devSkyPurple">
-              <Image src="/delete.png" alt="view" width={16} height={16} />
-            </button>
-          )}
+          {role === "admin" && <FormModal type="delete" table="result" />}
         </div>
       </td>
     </tr>
@@ -95,9 +90,7 @@ const ResultListPage = () => {
               <Image src="/sort.png" alt="filter" width={14} height={14} />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-devYellow">
-                <Image src="/plus.png" alt="filter" width={14} height={14} />
-              </button>
+              <FormModal table="result" type="create"/>
             )}
           </div>
         </div>

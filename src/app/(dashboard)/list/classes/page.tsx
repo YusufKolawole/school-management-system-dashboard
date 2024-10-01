@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -11,7 +12,6 @@ type Class = {
   capacity: number;
   grade: number;
   supervisor: string;
-
 };
 
 const columns = [
@@ -52,14 +52,10 @@ const ClassesListPage = () => {
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/classes/${item.id}`}>
-            <button className="rounded-full w-7 h-7 flex items-center justify-center bg-devSky">
-              <Image src="/edit.png" alt="view" width={16} height={16} />
-            </button>
+            <FormModal table="class" type="update" />
           </Link>
           {role === "admin" && (
-            <button className="rounded-full w-7 h-7 flex items-center justify-center bg-devSkyPurple">
-              <Image src="/delete.png" alt="view" width={16} height={16} />
-            </button>
+            <FormModal table="class" type="delete" id={item.id} />
           )}
         </div>
       </td>
