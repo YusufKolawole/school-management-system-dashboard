@@ -1,4 +1,4 @@
-import Announcement from "@/components/Announcement";
+teacimport Announcement from "@/components/Announcements";
 import BigCalendar from "@/components/BigCalendar";
 import EventCalendar from "@/components/EventCalendar";
 

@@ -1,4 +1,4 @@
-const Announcement = () => {
+const Announcements = () => {
   return (
     <div className="bg-white p-4 rounded-md">
       <div className="flex items-center justify-between">
@@ -58,4 +58,4 @@ const Announcement = () => {
     </div>
   );
 };
-export default Announcement;
+export default Announcements;

@@ -1,4 +1,4 @@
-import Announcement from "@/components/Announcement";
+import Announcements from "@/components/Announcements";
 import BigCalendar from "@/components/BigCalendar";
 
 const ParentPage = () => {
@@ -13,7 +13,7 @@ const ParentPage = () => {
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-8">
-        <Announcement />
+        <Announcements />
       </div>
     </div>
   );
